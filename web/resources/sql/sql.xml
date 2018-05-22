@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<vendors>
+    <vendor type="MYSQL">
+        <entities>
+            <entity type="QUIZ">
+                <statements>
+                    <statement type="CREATE">
+                        <![CDATA[
+                            insert INTO quiz_db.quizzes(`name`, `desc`, `author`) VALUES(?, ?, ?);
+                        ]]>
+                    </statement>
+                    <statement type="READ">
+                        <![CDATA[
+                            select `id`
+                                , `name`
+                                , `desc`
+                                , `author`
+                            from quiz_db.quizzes
+                            where `id` = ?;
+                        ]]>
+                    </statement>
+                    <statement type="UPDATE">
+                        <![CDATA[
+                            update quiz_db.quizzes set `name` = ?, `desc` = ? `author` = ?;
+                        ]]>
+                    </statement>
+                    <statement type="DELETE">
+                        <![CDATA[
+                            DELETE FROM quiz_db.quizzes where `id` = ?;
+                        ]]>
+                    </statement>
+                    <statement type="READ_ALL">
+                        <![CDATA[
+                            select `id`
+                                , `name`
+                                , `desc`
+                                , `author`
+                            from quiz_db.quizzes;
+                        ]]>
+                    </statement>
+                </statements>
+            </entity>
+            <entity type="USER">
+                <statements>
+                    <statement type="CREATE">
+                        <![CDATA[
+                            insert INTO quiz_db.user(`name`,`pass`) VALUES(?, ?)");
+                        ]]>
+                    </statement>
+                    <statement type="READ">
+                        <![CDATA[
+                            select`name`
+                                 ,`pass`
+                            from quiz_db.user
+                            where `name` = ?;
+                        ]]>
+                    </statement>
+                    <statement type="UPDATE">
+                        <![CDATA[
+                            update quiz_db.user set `pass` = ? where `name` = ?;
+                        ]]>
+                    </statement>
+                    <statement type="DELETE">
+                        <![CDATA[
+                          DELETE quiz_db.user where `name` = ?;
+                        ]]>
+                    </statement>
+                    <statement type="READ_ALL">
+                        <![CDATA[
+                            select`name`
+                                 ,`pass`
+                            from quiz_db.user
+                            where `name` = ?;
+                        ]]>
+                    </statement>
+                </statements>
+            </entity>
+            <entity type="QUESTION">
+                <statements>
+                    <statement type="CREATE">
+                        <![CDATA[
+                            insert INTO quiz_db.questions(`body`, `is_right`, `quiz_id`) VALUES(?, ?, ?)");
+                        ]]>
+                    </statement>
+                    <statement type="READ">
+                        <![CDATA[
+                          select `id`
+                                ,`body`
+                                ,`is_right`
+                                ,`quiz_id`
+                          from quiz_db.questions where `id` = ?;
+                        ]]>
+                    </statement>
+                    <statement type="UPDATE">
+                        <![CDATA[
+                            update quiz_db.questions
+                            set `body` = ?,
+                                `is_right` = ?
+                            where `id` = ?;
+                        ]]>
+                    </statement>
+                    <statement type="DELETE">
+                        <![CDATA[
+                          DELETE FROM postgres.public.quizzes where id = ?;
+                        ]]>
+                    </statement>
+                    <statement type="READ_ALL">
+                        <![CDATA[
+                          select `id`
+                                ,`body`
+                                ,`is_right`
+                                ,`quiz_id`
+                          from quiz_db.questions;
+                        ]]>
+                    </statement>
+                </statements>
+            </entity>
+        </entities>
+    </vendor>
+    <vendor type="POSTGRESQL">
+        <entities>
+            <entity type="QUIZ">
+                <statements>
+                    <statement type="CREATE">
+                        <![CDATA[
+                            insert INTO postgres.public.quizzes(name, "desc", author) VALUES(?, ?, ?)");
+                        ]]>
+                    </statement>
+                    <statement type="READ">
+                        <![CDATA[
+                          select name, "desc", author from postgres.public.quizzes join postgres.public. where id = ?;
+                        ]]>
+                    </statement>
+                    <statement type="UPDATE">
+                        <![CDATA[
+                            update postgres.public.quizzes set name = ?, "desc" = ? author = ?;
+                        ]]>
+                    </statement>
+                    <statement type="DELETE">
+                        <![CDATA[
+                          DELETE FROM postgres.public.quizzes where id = ?;
+                        ]]>
+                    </statement>
+                    <statement type="READ_ALL">
+                        <![CDATA[
+                            select name, "desc", author from postgres.public.quizzes;
+                        ]]>
+                    </statement>
+                </statements>
+            </entity>
+        </entities>
+    </vendor>
+</vendors>
+
