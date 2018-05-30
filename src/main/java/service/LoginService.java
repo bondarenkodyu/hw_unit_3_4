@@ -1,20 +1,27 @@
 package service;
 
 import dao.Credentials;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+@Service
 public class LoginService {
 
+    @Autowired
     private Credentials credentials;
 
     public LoginService() {
-        this.credentials = new Credentials();
     }
 
     public boolean isRegistered(String login, String pass){
-        String savedPass = credentials.get(login);
+        String savedPass = getCredentials().get(login);
         return Objects.nonNull(savedPass) && savedPass.equals(pass);
+    }
+
+    public Credentials getCredentials() {
+        return credentials;
     }
 
 }

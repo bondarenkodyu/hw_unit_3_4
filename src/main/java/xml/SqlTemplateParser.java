@@ -21,7 +21,7 @@ public class SqlTemplateParser {
     public static Map<Vendor, Map<Entity, Set<TemplateNode>>> parse() throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = builderFactory.newDocumentBuilder();
-        Document document = builder.parse("C:\\Users\\dbond\\IdeaProjects\\hw_unit_3_4\\web\\resources\\sql\\sql.xml");
+        Document document = builder.parse("C:\\Users\\dbond\\IdeaProjects\\hw_unit_3_4\\web\\WEB-INF\\resources\\sql\\sql.xml");
         document.normalizeDocument();
         Map<Vendor, Map<Entity, Set<TemplateNode>>> result = new HashMap<>();
         Element root =  document.getDocumentElement();

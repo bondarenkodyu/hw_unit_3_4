@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class QuestionDao extends AbstractEntity {
+public abstract class QuestionDao extends AbstractEntity {
 
     public QuestionDao(Vendor vendor, Entity entity) {
         super(vendor, entity);

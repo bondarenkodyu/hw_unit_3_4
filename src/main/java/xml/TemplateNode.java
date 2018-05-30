@@ -1,8 +1,6 @@
 package xml;
 
-import dao.Entity;
 import dao.Operation;
-import dao.Vendor;
 
 import java.util.Objects;
 

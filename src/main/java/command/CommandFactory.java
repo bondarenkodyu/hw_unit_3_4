@@ -1,15 +1,23 @@
 package command;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+
+@Component
 public class CommandFactory {
 
-    public static Command create(String key) throws Exception{
-        switch (key) {
-            case "login":
-                return new LoginCommand();
-            case "logout":
-                return new LogoutCommand();
-            default:
-                throw new Exception(String.format("Unsupported command {%s}", key));
-        }
+    private AnnotationConfigApplicationContext context;
+
+    @PostConstruct
+    public void init(){
+        context = new AnnotationConfigApplicationContext(CommandConfiguration.class);
+        context.refresh();
+    }
+
+    public Command create(String key){
+        return (Command) context.getBean(key);
     }
 }

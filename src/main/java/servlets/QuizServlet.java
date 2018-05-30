@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 
 @WebServlet(name = "quizServlet", urlPatterns = "/quiz")
@@ -20,9 +21,9 @@ public class QuizServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
-        Quiz quiz = (Quiz) service.get(name);
-        if (quiz != null){
-            req.setAttribute("quiz", quiz);
+        Optional<Quiz> quiz = service.get(name);
+        if (quiz.isPresent()){
+            req.setAttribute("quiz", quiz.get());
             req.getRequestDispatcher("/quiz.jsp").forward(req, resp);
         }
     }

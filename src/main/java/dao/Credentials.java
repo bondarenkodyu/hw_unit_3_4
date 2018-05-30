@@ -1,14 +1,20 @@
 package dao;
 
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class Credentials {
 
-    private static Map<String, String> credentials = new HashMap<>();
+    private Map<String, String> credentials;
 
-    static {
-        credentials.put("root", "root");
+    @PostConstruct
+    public void init(){
+       credentials = new HashMap<>();
+       credentials.put("root", "root");
     }
 
     public void add(String login, String pass){

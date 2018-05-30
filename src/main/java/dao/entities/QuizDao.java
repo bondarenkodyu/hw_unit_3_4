@@ -6,6 +6,7 @@ import dao.Operation;
 import dao.Vendor;
 import logging.Log;
 import model.Quiz;
+import org.springframework.stereotype.Component;
 import utils.JdbcUtils;
 
 import java.sql.*;
