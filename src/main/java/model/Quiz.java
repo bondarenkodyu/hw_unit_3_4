@@ -1,13 +1,30 @@
 package model;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+
+@Entity
+@Table(name = "quiz")
 public class Quiz {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "author")
     private String author;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "quiz_id")
     private List<Question> questions;
 
     public Quiz(String name, String description, String author) {
@@ -26,6 +43,9 @@ public class Quiz {
         this.description = description;
         this.author = author;
         this.questions = questions;
+    }
+
+    public Quiz() {
     }
 
     public String getName() {
@@ -58,6 +78,14 @@ public class Quiz {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

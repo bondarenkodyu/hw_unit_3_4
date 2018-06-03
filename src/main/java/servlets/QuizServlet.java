@@ -21,9 +21,9 @@ public class QuizServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
-        Optional<Quiz> quiz = service.get(name);
-        if (quiz.isPresent()){
-            req.setAttribute("quiz", quiz.get());
+        Quiz quiz = service.get(name);
+        if (quiz != null){
+            req.setAttribute("quiz", quiz);
             req.getRequestDispatcher("/quiz.jsp").forward(req, resp);
         }
     }

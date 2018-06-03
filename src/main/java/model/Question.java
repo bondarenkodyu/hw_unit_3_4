@@ -1,17 +1,29 @@
 package model;
 
+
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "question")
 public class Question {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "body")
     private String body;
+
+    @Column(name = "is_right")
     private boolean isRight;
 
-    public Question(int id, String body, boolean isRight) {
-        this.id = id;
-        this.body = body;
-        this.isRight = isRight;
+    @JoinColumn(name = "quiz_id")
+    private int quizId;
+
+    public Question() {
     }
 
     public int getId() {
@@ -36,6 +48,14 @@ public class Question {
 
     public void setRight(boolean right) {
         isRight = right;
+    }
+
+    public int getQuizId() {
+        return quizId;
+    }
+
+    public void setQuizId(int quizId) {
+        this.quizId = quizId;
     }
 
     @Override
