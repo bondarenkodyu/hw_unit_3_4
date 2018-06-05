@@ -1,6 +1,5 @@
 import service.QuizService;
 
-import java.sql.SQLException;
 
 public class DbName {
 
@@ -8,7 +7,7 @@ public class DbName {
 
         QuizService quizService = new QuizService();
         System.out.println(quizService.get("1").getQuestions());
-//        System.out.println(quizService.getAll());
+        System.out.println(quizService.getAll());
 
         System.out.println();
     }

@@ -20,8 +20,10 @@ public class Question {
     @Column(name = "is_right")
     private boolean isRight;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "quiz_id")
-    private int quizId;
+    private Quiz quiz;
 
     public Question() {
     }
@@ -50,13 +52,6 @@ public class Question {
         isRight = right;
     }
 
-    public int getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(int quizId) {
-        this.quizId = quizId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -74,5 +69,13 @@ public class Question {
         return Objects.hash(id, body, isRight);
     }
 
-
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", body='" + body + '\'' +
+                ", isRight=" + isRight +
+                ", quiz=" + quiz +
+                '}';
+    }
 }

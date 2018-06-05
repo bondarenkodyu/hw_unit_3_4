@@ -104,4 +104,14 @@ public class Quiz {
 
         return Objects.hash(name, description, author, questions);
     }
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                '}';
+    }
 }

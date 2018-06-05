@@ -26,14 +26,16 @@ public class AuthorizationFilter implements Filter{
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        HttpServletResponse resp = (HttpServletResponse) servletResponse;
-        HttpSession session = req.getSession(false);
-        if (session == null && !isNeededToPass(req, resp, filterChain)){
-            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
-        }
+//        HttpServletRequest req = (HttpServletRequest) servletRequest;
+//        HttpServletResponse resp = (HttpServletResponse) servletResponse;
+//        HttpSession session = req.getSession(false);
+//        if (session == null && !isNeededToPass(req, resp, filterChain)){
+//            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+//        } else {
+//            filterChain.doFilter(servletRequest, servletResponse);
+//        }
+
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     private boolean isNeededToPass(HttpServletRequest req, HttpServletResponse resp, FilterChain filterChain) throws IOException, ServletException {

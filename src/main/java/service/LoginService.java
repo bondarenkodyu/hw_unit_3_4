@@ -1,6 +1,6 @@
 package service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -13,8 +13,9 @@ public class LoginService {
     }
 
     public boolean isRegistered(String login, String pass){
-        String savedPass = null;
-        return Objects.nonNull(savedPass) && savedPass.equals(pass);
+        String savedPass = "root";
+        String user = "root";
+        return user.equals(login) && savedPass.equals(pass);
     }
 
 }
