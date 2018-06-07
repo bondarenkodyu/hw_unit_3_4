@@ -25,7 +25,7 @@ public class QuizService {
     public void remove(String name){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("delete from " + Quiz.class.getName().toLowerCase() + " where name = :name");
+        Query query = session.createQuery("delete from quiz where name = :name");
         query.setParameter("name", name);
         query.executeUpdate();
         transaction.commit();

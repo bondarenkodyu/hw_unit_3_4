@@ -1,22 +1,24 @@
-package servlets;
+package controler;
+
 
 import command.Command;
 import command.LoginCommand;
 import command.LogoutCommand;
 import logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//@WebServlet(name = "login", urlPatterns = "/login")
-public class LoginServlet extends HttpServlet {
+@Controller
+public class LoginController {
 
     @Autowired
     private LoginCommand loginCommand;
@@ -24,15 +26,9 @@ public class LoginServlet extends HttpServlet {
     @Autowired
     private LogoutCommand logoutCommand;
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
-                config.getServletContext());
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    public void loginLogout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String stringCommand = req.getParameter("command");
         Log.writeInfo("Specified command {%s}", stringCommand);
         Command command = null;
@@ -49,4 +45,5 @@ public class LoginServlet extends HttpServlet {
             Log.writeError(e, "Unable to execute {%s} command", command);
         }
     }
+
 }

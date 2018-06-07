@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@WebFilter(filterName = "AuthorizationFilter", urlPatterns = "/*")
+//@WebFilter(filterName = "AuthorizationFilter", urlPatterns = "/*")
 public class AuthorizationFilter implements Filter{
 
     private Set<String> uris = new HashSet<>();

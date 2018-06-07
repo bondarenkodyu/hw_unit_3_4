@@ -14,10 +14,19 @@ public class QuizController {
     private QuizService quizService;
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/quizzes")
+    @RequestMapping(method = RequestMethod.GET, value = "quizzes")
     public String getQuizzes(Model model){
         model.addAllAttributes(quizService.getAll());
         return "quizzes";
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "quizzes")
+    public String getQuizzesPost(Model model){
+        model.addAllAttributes(quizService.getAll());
+        return "quizzes";
+    }
+
+
+
 
 }
